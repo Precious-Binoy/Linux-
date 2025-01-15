@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Linux</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e0f2f7, #ffffff);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #2196f3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .intro {
+            margin-bottom: 30px;
+        }
+        .intro img {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 300px; /* Increased logo size */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .intro img:hover {
+            transform: scale(1.1);
+        }
+        .intro h2 {
+            text-align: left;
+            font-size: 2em; /* Bigger heading */
+            margin-bottom: 10px;
+        }
+        .intro p {
+            text-align: justify;
+            font-size: 1.1em; /* Slightly larger paragraph text */
+            margin-bottom: 15px; /* Added margin between paragraphs */
+        }
+        .commands {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger command boxes */
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .command-box {
+            border: 2px solid #2196f3; /* Border to make it visible */
+            padding: 25px; /* Increased padding */
+            border-radius: 8px;
+            background: #bbdefb; /* Light blue background */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        .command-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: #b3e5fc; /* Slightly darker on hover */
+        }
+        .command-box h3 {
+            margin: 0;
+            font-size: 1.6em; /* Increased font size */
+            color: #2196f3;
+        }
+        .description {
+            display: none; /* Hidden by default */
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .next-page-link {
+            display: block;
+            margin: 40px auto; /* Increased margin */
+            width: fit-content;
+            padding: 15px 30px; /* Larger padding */
+            font-size: 1.2em; /* Increased font size */
+            background: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px; /* Bigger radius */
+            transition: background-color 0.3s ease, transform 0.2s;
+            text-align: center;
+        }
+        .next-page-link:hover {
+            background: #43a047;
+            transform: scale(1.05);
+        }
+                @media (max-width: 900px) { /* Adjusted breakpoint */
+            .commands {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly smaller on smaller screens */
+            }
+        }
+        @media (max-width: 600px) { /* Adjusted breakpoint */
+            .commands {
+                grid-template-columns: 1fr; /* Stack on very small screens */
+            }
+        }
+        /* About Us Section */
+        .about-us {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .about-us h2 {
+            color: #2196f3; /* Blue */
+            margin-bottom: 15px;
+        }
+        .about-us p {
+            font-size: 1.1em; /* Slightly larger paragraph text */
+            margin-bottom: 10px; /* Added margin between paragraphs */
+        }
+    </style>
+    <script>
+        function showDescription(command) {
+            const descriptions = {
+                apropos: "Searches the manual page names and descriptions.",
+                alias: "Creates shortcuts for commands.",
+                uname: "Displays system information.",
+                df: "Shows disk space usage.",
+                du: "Displays file and directory disk usage.",
+                mount: "Mounts a filesystem.",
+                ln: "Creates links between files.",
+                man: "Displays the manual pages for commands.",
+                info: "Displays detailed command documentation."
+            };
+
+            // Get all description elements and hide them
+            const allDescriptions = document.querySelectorAll('.description');
+            allDescriptions.forEach(desc => desc.style.display = 'none');
+
+            // Show the description for the clicked command
+            const descriptionElement = document.getElementById(command + '-description');
+            if (descriptionElement) {
+                descriptionElement.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Introduction to Linux</h1>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <img src="im.jpg" alt="Linux Logo">
+            <h2>What is Linux?</h2>
+            <p>Linux is an open-source operating system kernel that serves as the foundation for a variety of operating systems, collectively known as Linux distributions or distros. It was initially created by Linus Torvalds in 1991 and has since grown into a robust and versatile platform used across desktops, servers, mobile devices, and embedded systems.</p>
+            <p>Linux is known for its stability, security, and flexibility. Its open-source nature allows developers and organizations to modify, distribute, and use it freely. Popular Linux distributions include Ubuntu, Fedora, CentOS, and Debian, among others. The operating system supports a vast range of applications and programming languages, making it a preferred choice for developers, system administrators, and tech enthusiasts worldwide.</p>
+            <p>Linux is also recognized for its command-line interface, which empowers users to perform tasks efficiently by using commands. Whether managing files, configuring networks, or troubleshooting systems, Linux commands provide unmatched control and precision.</p>
+        </div>
+
+        <div class="commands">
+            <div class="command-box" onclick="showDescription('apropos')">
+                <h3>apropos</h3>
+                <div id="apropos-description" class="description">Searches the manual page names and descriptions.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('alias')">
+                <h3>alias</h3>
+                <div id="alias-description" class="description">Creates shortcuts for commands.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('uname')">
+                <h3>uname</h3>
+                <div id="uname-description" class="description">Displays system information.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('df')">
+                <h3>df</h3>
+                <div id="df-description" class="description">Shows disk space usage.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('du')">
+                <h3>du</h3>
+                <div id="du-description" class="description">Displays file and directory disk usage.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('mount')">
+                <h3>mount</h3>
+                <div id="mount-description" class="description
+                <div id="mount-description" class="description">Mounts a filesystem.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('ln')">
+                <h3>ln</h3>
+                <div id="ln-description" class="description">Creates links between files.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('man')">
+                <h3>man</h3>
+                <div id="man-description" class="description">Displays the manual pages for commands.</div>
+            </div>
+            <div class="command-box" onclick="showDescription('info')">
+                <h3>info</h3>
+               <div id="mount-description" class="description">Mounts a filesystem.</div>
+            </div>
+        </div>
+
+        <a href="commands.html" class="next-page-link">Learn More About Linux Commands</a>
+
+        <!-- About Us Section -->
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p>We are dedicated to providing comprehensive resources and guides for Linux users of all levels. Our goal is to help you navigate the Linux command line with ease and confidence.</p>
+            <p>Whether you are a beginner or an experienced user, we aim to offer valuable insights and tips to enhance your Linux experience.</p>
+        </div>
+    </div> <!-- End of container -->
+</body>
+</html>

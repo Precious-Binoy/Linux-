@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Command Guide</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: 'Roboto', sans-serif; /* Modern font */
+            margin: 0;
+            background-color: #f5f5f5; /* Light background */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background-color: #2979ff; /* Blue header */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 0.5em; /* Reduced margin */
+        }
+        /* ... (Rest of styles will follow) */
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Linux Command Guide</h1>
+        <p>A quick reference for common Linux commands</p>
+    </header>
+<div class="container">
+        <a href="index.html" class="back-button">Back</a>
+
+        <nav class="nav-links">
+            <a href="#apropos">apropos</a>
+            <a href="#alias">alias</a>
+            <a href="#uname">uname</a>
+            <a href="#df">df</a>
+            <a href="#du">du</a>
+            <a href="#mount">mount</a>
+            <a href="#ln">ln</a>
+            <a href="#man">man</a>
+            <a href="#info">info</a>
+        </nav>
+
+        <style>
+            .container {
+                max-width: 960px; /* Wider container */
+                margin: 20px auto;
+                padding: 20px;
+                background: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+
+            .back-button, .scroll-top-button {
+                display: inline-block;
+                margin: 10px 0; /* Reduced margin */
+                padding: 8px 12px; /* Adjusted padding */
+                background-color: #2979ff;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s, transform 0.2s;
+            }
+
+            .back-button:hover, .scroll-top-button:hover {
+                background-color: #0d47a1; /* Darker blue on hover */
+                transform: scale(1.03);
+            }
+
+            nav.nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-bottom: 20px;
+                gap: 10px;
+                padding: 10px;
+                background-color: #e3f2fd;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: #1a237e; /* Darker blue link color */
+                padding: 8px 12px;
+                border: 1px solid #bbdefb;
+                border-radius: 5px;
+                background-color: white;
+                transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            }
+
+            .nav-links a:hover {
+                background-color: #1a237e;
+                color: white;
+                transform: scale(1.05);
+            }
+            .command-section {
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 8px;
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Card shadow */
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .command-section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            }
+            .command-section h2 {
+                color: #1a237e;
+                margin-bottom: 10px;
+            }
+
+            .command-section pre {
+                background: #f0f0f0;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                overflow-x: auto;
+                white-space: pre-wrap;
+                font-family: monospace;
+            }
+
+            .example-image {
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .example-image img {
+                max-width: 80%;
+                height: auto;
+                border: 1px solid #ddd;
+                padding: 5px;
+                background: white;
+                border-radius: 5px;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                transition: transform 0.2s;
+            }
+
+            .example-image img:hover {
+                transform: scale(1.05);
+            }
+
+            @media (max-width: 768px) {
+                .nav-links {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+<div id="apropos" class="command-section">
+            <h2><a href="#apropos">apropos</a></h2>
+            <p><strong>Description:</strong> Searches manual pages for keywords. The apropos command helps you find Linux manual (man) pages related to a specific keyword. It’s useful when you don’t know the exact command name but can describe what you’re looking for.</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>apropos keyword</pre>
+            <p><strong>Example:</strong></p>
+            <pre>apropos network</pre>
+            <div class="example-image">
+                <img src="apropos.png" alt="apropos example">
+            </div>
+        </div>
+
+        <div id="alias" class="command-section">
+            <h2><a href="#alias">alias</a></h2>
+            <p><strong>Description:</strong> Creates command shortcuts.  The alias command allows you to create custom shortcuts for longer or complex commands, making them easier to use and saving time.
+</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>alias name='command'</pre>
+            <p><strong>Example:</strong></p>
+            <pre>alias la='ls -la'</pre>
+            <div class="example-image">
+                <img src="alias.png" alt="alias example">
+            </div>
+        </div>
+
+        <div id="uname" class="command-section">
+            <h2><a href="#uname">uname</a></h2>
+            <p><strong>Description:</strong> Displays system information.  The uname command provides basic system information, such as the operating system name, kernel version, and hardware details.
+</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>uname [options]</pre>
+            <p><strong>Example:</strong></p>
+            <pre>uname -a</pre>
+            <div class="example-image">
+                <img src="uname.png" alt="uname example">
+            </div>
+        </div>
+
+        <div id="df" class="command-section">
+            <h2><a href="#df">df</a></h2>
+            <p><strong>Description:</strong> Shows disk space usage. The df command displays disk space usage of file systems, including information about available and used space.</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>df [options]</pre>
+            <p><strong>Example:</strong></p>
+            <pre>df -h</pre>
+            <div class="example-image">
+                <img src="df.jpg" alt="df example">
+            </div>
+        </div>
+
+        <div id="du" class="command-section">
+            <h2><a href="#du">du</a></h2>
+            <p><strong>Description:</strong> Displays file and directory disk usage. The du command estimates and displays the disk space usage of files and directories, helping you find which items take up the most space.
+</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>du [options] [file/directory]</pre>
+            <p><strong>Example:</strong></p>
+            <pre>du -sh /home/user</pre>
+            <div class="example-image">
+                <img src="du.png" alt="du example">
+            </div>
+        </div>
+
+        <div id="mount" class="command-section">
+            <h2><a href="#mount">mount</a></h2>
+            <p><strong>Description:</strong> Mounts a filesystem. The mount command is used to attach file systems (e.g., external drives or network shares) to the Linux directory tree, making them accessible.
+</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>mount [options] [device] [directory]</pre>
+            <p><strong>Example:</strong></p>
+            <pre>mount /dev/sda1 /mnt</pre>
+            <div class="example-image">
+                <img src="mount.png" alt="mount example">
+            </div>
+        </div>
+
+        <div id="ln" class="command-section">
+            <h2><a href="#ln">ln</a></h2>
+            <p><strong>Description:</strong> Creates links between files (hard or symbolic). The ln command creates links between files, either as hard links (direct pointers) or symbolic links (shortcuts).
+</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>ln [options] target link_name</pre>
+            <p><strong>Example:</strong></p>
+            <pre>ln -s /path/to/file /path/to/symlink</pre>
+            <div class="example-image">
+                <img src="in.png" alt="ln example">
+            </div>
+        </div>
+
+        <div id="man" class="command-section">
+            <h2><a href="#man">man</a></h2>
+            <p><strong>Description:</strong> Displays command manual pages. The man command displays the manual pages for Linux commands, providing detailed documentation, options, and examples.
+</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>man command</pre>
+            <p><strong>Example:</strong></p>
+            <pre>man ls</pre>
+            <div class="example-image">
+                <img src="man.png" alt="man example">
+            </div>
+        </div>
+
+        <div id="info" class="command-section">
+            <h2><a href="#info">info</a></h2>
+            <p><strong>Description:</strong> Displays detailed command documentation.The info command provides detailed documentation about commands, often more comprehensive and structured than man pages.</p>
+            <p><strong>Syntax:</strong></p>
+            <pre>info command</pre>
+            <p><strong>Example:</strong></p>
+            <pre>info ls</pre>
+            <div class="example-image">
+                <img src="info.png" alt="info example">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div style="text-align: right; margin-top: 20px;">
+            <button onclick="scrollToTop()" class="scroll-top-button">Scroll to Top</button>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
